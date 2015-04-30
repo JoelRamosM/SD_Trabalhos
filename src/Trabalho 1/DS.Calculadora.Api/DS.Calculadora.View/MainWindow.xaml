@@ -1,0 +1,110 @@
+﻿<Window x:Class="DS.Calculadora.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <Style x:Key="Operacoes">
+            <Style.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                    <Setter Property="FontWeight" Value="600"></Setter>
+                    <Setter Property="FontSize" Value="28"></Setter>
+                </Style>
+            </Style.Resources>
+        </Style>
+
+
+        <Style TargetType="Border" x:Key="Valores">
+            <Setter Property="Margin" Value="50,10,50,0"></Setter>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+        </Style>
+
+        <Style x:Key="RegistraServer">
+            <Style.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="FontWeight" Value="600"/>
+                    <Setter Property="Margin" Value="10,5"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="Button">
+                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                    <Setter Property="Padding" Value="15,5"/>
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="FontWeight" Value="600"/>
+                </Style>
+            </Style.Resources>
+
+        </Style>
+        <Style x:Key="Input">
+            <Style.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="FontWeight" Value="600"/>
+                    <Setter Property="Margin" Value="10,5"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="Button">
+                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                    <Setter Property="Padding" Value="15,5"/>
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="FontWeight" Value="600"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical" Style="{StaticResource Operacoes}">
+            <Button Content="+" Command="{Binding OnSoma}"/>
+            <Button Content="-" Command= "{Binding OnSub}"/>
+            <Button Content="X" Command="{Binding OnMult}"/>
+            <Button Content="/" Command="{Binding OnDiv}"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Orientation="Vertical">
+            <Border Style="{StaticResource Valores}">
+                <StackPanel Orientation="Vertical" Style="{StaticResource RegistraServer}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Url Servidor : " />
+                        <TextBox Text="{Binding UrlServer,Mode=TwoWay}" Width="120"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Porta:" />
+                        <TextBox Text="{Binding Port,Mode=TwoWay}" Width="40"></TextBox>
+                    </StackPanel>
+                    <Button Content="Registrar" Command="{Binding OnRegServer}" IsEnabled="{Binding IsReg}"></Button>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource Valores}">
+                <StackPanel Orientation="Vertical" Style="{StaticResource Input}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Valor 1 : " />
+                        <TextBox Text="{Binding Valor1}" Width="40"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Valor 2 : " />
+                        <TextBox Text="{Binding Valor2}" Width="40"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Resultado : " />
+                        <TextBlock Text="{Binding Result}" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Window>
