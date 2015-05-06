@@ -1,0 +1,30 @@
+criar servidor grupos{
+	Crud Grupos registrando{
+		idgrupo,
+		nomegrupo
+		Hub,
+		Usuarios,
+		administrador,
+		destinatarios = usuarios+adminsitrador		
+	}
+	registrar Hub em grupo, 
+	registra usuario em grupo
+	registrar grupos,
+	Cada grupo criado um hub tambem e criado,
+	levantar um hub,
+	Cada vez que um usuario entra em um grupo avisas hub,
+	ao excluir grupo matar hub
+	informa grupos disponiveis,
+	administrador é o unico que pode excluir o grupo
+},
+criar hub mensagens{
+	envia as mensagens para seu grupo,
+	ao entrar novos usuarios informar todos os membros do grupo
+} 
+
+Client{
+	escolhe ou cria grupo, 
+	entra no grupo, 
+	envia e recebe mensagens,
+		
+}
